@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 })
 
 const booksController = require('./controllers/books.js')
-app.use('/books', booksController)
+app.use('books', booksController)
 
 // LISTEN
 app.listen(PORT, () => {
