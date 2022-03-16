@@ -43,8 +43,8 @@ const Book = require('../models/index.js')
 // Get all books
 books.get('/', (req, res) => {
     Book.find()
-    .then(foundBooks => {
-        res.json(foundBooks)
+    .then((foundBooks) => {
+        res.json({ foundBooks })
     })
     .catch(err => {
         console.log(err)
@@ -54,9 +54,9 @@ books.get('/', (req, res) => {
 
 // Get individual book
 books.get('/:id', (req, res) => {
-    Book.findOne({ name: req.params.title })
-    .then(foundBook => {
-        res.json(foundBook)
+    Book.findById(req.params.id)
+    .then((foundBook) => {
+        res.json({ foundBook })
     })
     .catch(err => {
         console.log(err)
@@ -89,7 +89,7 @@ books.delete('/:id', (req, res) => {
 // Add book
 books.post('/', (req, res) => {
     Book.create(req.body)
-    .then(createdBook => {
+    .then(() => {
         res.json(createdBook)
     })
     .catch(err => {
